@@ -1,18 +1,18 @@
 //
-//  AppDelegate.m
+//  OPOAppDelegate.m
 //  ListOfNames
 //
 //  Created by Aleh Pachtovy on 8/26/18.
 //  Copyright © 2018 Aleh Pachtovy. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "OPOAppDelegate.h"
 
-@interface AppDelegate ()
+@interface OPOAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation OPOAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

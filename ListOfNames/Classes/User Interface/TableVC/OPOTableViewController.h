@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  OPOTableViewController.h
 //  ListOfNames
 //
 //  Created by Aleh Pachtovy on 8/26/18.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface OPOTableViewController : UITableViewController
 
 @end
-
