@@ -53,6 +53,10 @@
 }
 
 -(void)changeListSorting {
+    if (self.listOfNames.count < 2)
+    {
+        return;
+    }
     isSortingAscending = !isSortingAscending;
 //    NSArray *sortedArray = [self sortUsingDescriptor:self.listOfNames withAscending:isSortingAscending];
     NSArray *sortedArray = [self sortUsingFunction:self.listOfNames withAscending:isSortingAscending];
