@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="21J-ec-GNg">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OPOTableViewCell" id="21J-ec-GNg">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="21J-ec-GNg" id="VWV-VL-UC1">
@@ -33,7 +33,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="k7n-sk-KI4">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cyn-8R-iTb"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cyn-8R-iTb">
+                            <connections>
+                                <action selector="addPressed:" destination="ZEx-BD-3xN" id="hEb-XJ-4ko"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0G-fk-P6x" userLabel="First Responder" sceneMemberID="firstResponder"/>

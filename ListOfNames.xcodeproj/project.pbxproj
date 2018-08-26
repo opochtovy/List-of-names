@@ -13,6 +13,10 @@
 		3036338E2132FC2100594498 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3036338C2132FC2100594498 /* LaunchScreen.storyboard */; };
 		303633912132FC2100594498 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 303633902132FC2100594498 /* main.m */; };
 		3036339C2133069100594498 /* OPOTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3036339B2133069100594498 /* OPOTableViewController.m */; };
+		303633A621330C3300594498 /* OPOBaseVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 303633A521330C3300594498 /* OPOBaseVM.m */; };
+		303633AA21330C8300594498 /* OPODataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 303633A921330C8300594498 /* OPODataManager.m */; };
+		303633AE21330E1F00594498 /* OPOTableVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 303633AD21330E1F00594498 /* OPOTableVM.m */; };
+		303633B12133201B00594498 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 303633B32133201B00594498 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,13 @@
 		303633902132FC2100594498 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3036339A2133069100594498 /* OPOTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPOTableViewController.h; sourceTree = "<group>"; };
 		3036339B2133069100594498 /* OPOTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPOTableViewController.m; sourceTree = "<group>"; };
+		303633A421330C3300594498 /* OPOBaseVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPOBaseVM.h; sourceTree = "<group>"; };
+		303633A521330C3300594498 /* OPOBaseVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPOBaseVM.m; sourceTree = "<group>"; };
+		303633A821330C8300594498 /* OPODataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPODataManager.h; sourceTree = "<group>"; };
+		303633A921330C8300594498 /* OPODataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPODataManager.m; sourceTree = "<group>"; };
+		303633AC21330E1F00594498 /* OPOTableVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OPOTableVM.h; sourceTree = "<group>"; };
+		303633AD21330E1F00594498 /* OPOTableVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OPOTableVM.m; sourceTree = "<group>"; };
+		303633B22133201B00594498 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +69,8 @@
 		303633802132FC2000594498 /* ListOfNames */ = {
 			isa = PBXGroup;
 			children = (
-				3036339E2133076800594498 /* Supporting Files */,
 				30363397213305D900594498 /* Classes */,
+				3036339E2133076800594498 /* Supporting Files */,
 				303633812132FC2000594498 /* OPOAppDelegate.h */,
 				303633822132FC2000594498 /* OPOAppDelegate.m */,
 			);
@@ -69,6 +80,7 @@
 		30363397213305D900594498 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				303633A221330BE900594498 /* Middle Ware */,
 				30363398213305ED00594498 /* User Interface */,
 			);
 			path = Classes;
@@ -85,6 +97,7 @@
 		303633992133063B00594498 /* TableVC */ = {
 			isa = PBXGroup;
 			children = (
+				303633AB21330DE500594498 /* ViewModel */,
 				3036339A2133069100594498 /* OPOTableViewController.h */,
 				3036339B2133069100594498 /* OPOTableViewController.m */,
 			);
@@ -99,8 +112,45 @@
 				3036338C2132FC2100594498 /* LaunchScreen.storyboard */,
 				3036338F2132FC2100594498 /* Info.plist */,
 				303633902132FC2100594498 /* main.m */,
+				303633B32133201B00594498 /* Localizable.strings */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		303633A221330BE900594498 /* Middle Ware */ = {
+			isa = PBXGroup;
+			children = (
+				303633A721330C6A00594498 /* Managers */,
+				303633A321330C1200594498 /* ViewModel */,
+			);
+			path = "Middle Ware";
+			sourceTree = "<group>";
+		};
+		303633A321330C1200594498 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				303633A421330C3300594498 /* OPOBaseVM.h */,
+				303633A521330C3300594498 /* OPOBaseVM.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		303633A721330C6A00594498 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				303633A821330C8300594498 /* OPODataManager.h */,
+				303633A921330C8300594498 /* OPODataManager.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		303633AB21330DE500594498 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				303633AC21330E1F00594498 /* OPOTableVM.h */,
+				303633AD21330E1F00594498 /* OPOTableVM.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3036338E2132FC2100594498 /* LaunchScreen.storyboard in Resources */,
+				303633B12133201B00594498 /* Localizable.strings in Resources */,
 				3036338B2132FC2100594498 /* Assets.xcassets in Resources */,
 				303633892132FC2000594498 /* Main.storyboard in Resources */,
 			);
@@ -173,8 +224,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				303633AE21330E1F00594498 /* OPOTableVM.m in Sources */,
+				303633AA21330C8300594498 /* OPODataManager.m in Sources */,
 				3036339C2133069100594498 /* OPOTableViewController.m in Sources */,
 				303633912132FC2100594498 /* main.m in Sources */,
+				303633A621330C3300594498 /* OPOBaseVM.m in Sources */,
 				303633832132FC2000594498 /* OPOAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,6 +250,14 @@
 				3036338D2132FC2100594498 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		303633B32133201B00594498 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				303633B22133201B00594498 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -252,7 +314,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -304,7 +366,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

@@ -1,0 +1,10 @@
+// OPODataManager
+"data_manager_file_path"="ListOfNames";
+
+// OPOTableViewController
+"table_vc_reuse_id"="OPOTableViewCell";
+"table_vc_screen_title"="List of names";
+"table_vc_popup_cancel"="Cancel";
+"table_vc_popup_add"="Add";
+"table_vc_popup_title"="Add a new name";
+"table_vc_popup_textfield_placeholder"="New name";
