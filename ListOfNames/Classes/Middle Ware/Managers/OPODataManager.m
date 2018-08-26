@@ -43,6 +43,13 @@ static OPODataManager *sharedManager = nil;
     return _names;
 }
 
+#pragma mark - Private Methods
+
+-(NSArray *)getListOfNamesFromFile
+{
+    return [[NSArray alloc] initWithContentsOfFile:[self filePath]];
+}
+
 #pragma mark - Public Methods
 
 -(NSArray *)getListOfNames
@@ -72,13 +79,6 @@ static OPODataManager *sharedManager = nil;
 -(void)updateArrayToFile:(NSArray *)array {
     [array writeToFile:[self filePath] atomically:YES];
     self.names = array;
-}
-
-#pragma mark - Private Methods
-
--(NSArray *)getListOfNamesFromFile
-{
-    return [[NSArray alloc] initWithContentsOfFile:[self filePath]];
 }
 
 @end

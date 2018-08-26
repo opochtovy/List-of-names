@@ -32,12 +32,6 @@
 
 #pragma mark - Public Methods
 
--(void)saveAddedName:(NSString *)name {
-    [[OPODataManager sharedManager] saveAddedName:name];
-    isSortingAscending = NO;
-    self.listOfNames = nil;
-}
-
 -(NSInteger)numberOfItems {
     return self.listOfNames.count;
 }
@@ -45,6 +39,12 @@
 -(NSString *)getItemNameFor:(NSInteger)index {
     NSString *name = [self.listOfNames objectAtIndex:index];
     return name;
+}
+
+-(void)saveAddedName:(NSString *)name {
+    [[OPODataManager sharedManager] saveAddedName:name];
+    isSortingAscending = NO;
+    self.listOfNames = nil;
 }
 
 -(void)deleteItemFor:(NSInteger)index {
