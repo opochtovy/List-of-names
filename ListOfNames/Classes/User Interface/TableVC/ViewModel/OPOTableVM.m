@@ -54,15 +54,37 @@
 
 -(void)changeListSorting {
     isSortingAscending = !isSortingAscending;
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:isSortingAscending selector:@selector(localizedStandardCompare:)];
-    NSArray *descriptors = [NSArray arrayWithObjects:descriptor, nil];
-    NSArray *sortedArray = [self.listOfNames sortedArrayUsingDescriptors:descriptors];
+//    NSArray *sortedArray = [self sortUsingDescriptor];
+    NSArray *sortedArray = [self sortUsingFunction];
     [[OPODataManager sharedManager] updateArrayToFile:sortedArray];
     self.listOfNames = nil;
 }
 
 -(NSString *)getNameForSortButton {
     return isSortingAscending ? NSLocalizedString(@"table_vc_sort_descending", nil) : NSLocalizedString(@"table_vc_sort_ascending", nil);
+}
+
+#pragma mark - Private Methods
+
+-(NSArray *)sortUsingDescriptor {
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:isSortingAscending selector:@selector(localizedStandardCompare:)];
+    NSArray *descriptors = [NSArray arrayWithObjects:descriptor, nil];
+    return [self.listOfNames sortedArrayUsingDescriptors:descriptors];
+}
+
+-(NSArray *)sortUsingFunction {
+    BOOL reverseSort = !isSortingAscending;
+    return [self.listOfNames sortedArrayUsingFunction:nameSort context:&reverseSort];
+}
+
+NSInteger nameSort(NSString *name1, NSString *name2, void *reverse)
+{
+    NSComparisonResult comparison = [name1 localizedStandardCompare:name2];
+    
+    if (*(BOOL *)reverse == YES) {
+        return 0 - comparison;
+    }
+    return comparison;
 }
 
 @end
