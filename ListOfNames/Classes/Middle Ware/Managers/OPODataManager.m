@@ -43,7 +43,6 @@ static OPODataManager *sharedManager = nil;
 
 -(NSArray *)getListOfNames
 {
-//    return @[@"Ivan", @"Vasya"];
     return self.names;
 }
 
@@ -52,8 +51,18 @@ static OPODataManager *sharedManager = nil;
         return;
     }
     NSMutableArray *array = [[NSMutableArray alloc] initWithArray:self.names];
-    [array addObject:name];
-    [array writeToFile:[self filePath] atomically:YES];
+    [array insertObject:name atIndex:0];
+    [[array copy] writeToFile:[self filePath] atomically:YES];
+}
+
+-(void)deleteNameFor:(NSInteger)index {
+    if (index < 0 || index > self.names.count)
+    {
+        return;
+    }
+    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:self.names];
+    [array removeObjectAtIndex:index];
+    [[array copy] writeToFile:[self filePath] atomically:YES];
 }
 
 @end

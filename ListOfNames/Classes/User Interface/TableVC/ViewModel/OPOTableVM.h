@@ -14,5 +14,6 @@
 -(void)saveAddedName:(NSString *)name;
 -(NSInteger)numberOfItems;
 -(NSString *)getItemNameFor:(NSInteger)index;
+-(void)deleteItemFor:(NSInteger)index;
 
 @end

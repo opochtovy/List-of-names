@@ -31,4 +31,8 @@
     return name;
 }
 
+-(void)deleteItemFor:(NSInteger)index {
+    [[OPODataManager sharedManager] deleteNameFor:index];
+}
+
 @end
