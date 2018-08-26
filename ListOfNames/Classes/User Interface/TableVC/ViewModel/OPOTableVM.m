@@ -54,8 +54,8 @@
 
 -(void)changeListSorting {
     isSortingAscending = !isSortingAscending;
-//    NSArray *sortedArray = [self sortUsingDescriptor];
-    NSArray *sortedArray = [self sortUsingFunction];
+//    NSArray *sortedArray = [self sortUsingDescriptor:self.listOfNames withAscending:isSortingAscending];
+    NSArray *sortedArray = [self sortUsingFunction:self.listOfNames withAscending:isSortingAscending];
     [[OPODataManager sharedManager] updateArrayToFile:sortedArray];
     self.listOfNames = nil;
 }
@@ -66,15 +66,15 @@
 
 #pragma mark - Private Methods
 
--(NSArray *)sortUsingDescriptor {
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:isSortingAscending selector:@selector(localizedStandardCompare:)];
+-(NSArray *)sortUsingDescriptor:(NSArray *)array withAscending:(BOOL)isAscending {
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:isAscending selector:@selector(localizedStandardCompare:)];
     NSArray *descriptors = [NSArray arrayWithObjects:descriptor, nil];
-    return [self.listOfNames sortedArrayUsingDescriptors:descriptors];
+    return [array sortedArrayUsingDescriptors:descriptors];
 }
 
--(NSArray *)sortUsingFunction {
-    BOOL reverseSort = !isSortingAscending;
-    return [self.listOfNames sortedArrayUsingFunction:nameSort context:&reverseSort];
+-(NSArray *)sortUsingFunction:(NSArray *)array withAscending:(BOOL)isAscending {
+    BOOL reverseSort = !isAscending;
+    return [array sortedArrayUsingFunction:nameSort context:&reverseSort];
 }
 
 NSInteger nameSort(NSString *name1, NSString *name2, void *reverse)
