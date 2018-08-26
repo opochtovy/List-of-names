@@ -8,3 +8,5 @@
 "table_vc_popup_add"="Add";
 "table_vc_popup_title"="Add a new name";
 "table_vc_popup_textfield_placeholder"="New name";
+"table_vc_sort_ascending"="Sort A-Z";
+"table_vc_sort_descending"="Sort Z-A";

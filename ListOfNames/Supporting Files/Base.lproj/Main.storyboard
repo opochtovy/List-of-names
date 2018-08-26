@@ -33,6 +33,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="k7n-sk-KI4">
+                        <barButtonItem key="leftBarButtonItem" title="Sort A-Z" id="EJc-v3-Umy">
+                            <connections>
+                                <action selector="sortPressed:" destination="ZEx-BD-3xN" id="sVe-OE-38o"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cyn-8R-iTb">
                             <connections>
                                 <action selector="addPressed:" destination="ZEx-BD-3xN" id="hEb-XJ-4ko"/>

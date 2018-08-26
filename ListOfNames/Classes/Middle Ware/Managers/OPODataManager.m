@@ -36,7 +36,11 @@ static OPODataManager *sharedManager = nil;
 }
 
 -(NSArray *)names {
-    return _names = [[NSArray alloc] initWithContentsOfFile:[self filePath]];
+    if (_names == nil)
+    {
+        _names = [self getListOfNamesFromFile];
+    }
+    return _names;
 }
 
 #pragma mark - Public Methods
@@ -52,7 +56,7 @@ static OPODataManager *sharedManager = nil;
     }
     NSMutableArray *array = [[NSMutableArray alloc] initWithArray:self.names];
     [array insertObject:name atIndex:0];
-    [[array copy] writeToFile:[self filePath] atomically:YES];
+    [self updateArrayToFile:[array copy]];
 }
 
 -(void)deleteNameFor:(NSInteger)index {
@@ -62,7 +66,19 @@ static OPODataManager *sharedManager = nil;
     }
     NSMutableArray *array = [[NSMutableArray alloc] initWithArray:self.names];
     [array removeObjectAtIndex:index];
-    [[array copy] writeToFile:[self filePath] atomically:YES];
+    [self updateArrayToFile:array];
+}
+
+-(void)updateArrayToFile:(NSArray *)array {
+    [array writeToFile:[self filePath] atomically:YES];
+    self.names = array;
+}
+
+#pragma mark - Private Methods
+
+-(NSArray *)getListOfNamesFromFile
+{
+    return [[NSArray alloc] initWithContentsOfFile:[self filePath]];
 }
 
 @end

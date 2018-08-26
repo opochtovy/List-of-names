@@ -11,6 +11,8 @@
 
 @interface OPOTableViewController ()
 
+@property (weak, nonatomic) IBOutlet UIButton *btnSort;
+
 @property (nonatomic) OPOTableVM *viewModel;
 
 @end
@@ -50,6 +52,7 @@
         NSArray *textfields = popUp.textFields;
         UITextField *nameField = textfields[0];
         [weakSelf.viewModel saveAddedName:nameField.text];
+        [weakSelf updateSortButton];
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
         [weakSelf.tableView reloadData];
         [weakSelf removeObserverForPopUpTextField];
@@ -58,6 +61,7 @@
     
     [popUp addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.placeholder = NSLocalizedString(@"table_vc_popup_textfield_placeholder", nil);
+        textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
         textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         
         [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:textField queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
@@ -73,6 +77,11 @@
 
 -(void)removeObserverForPopUpTextField {
     [[NSNotificationCenter defaultCenter] removeObserver:UITextFieldTextDidChangeNotification];
+}
+
+-(void)updateSortButton {
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithTitle:[self.viewModel getNameForSortButton] style:UIBarButtonItemStylePlain target:self action:@selector(sortPressed:)];
+    self.navigationItem.leftBarButtonItem = leftItem;
 }
 
 #pragma mark - UITableViewDataSource
@@ -108,6 +117,12 @@
 
 -(IBAction)addPressed:(UIBarButtonItem *)sender {
     [self showPopUpToAddName];
+}
+
+-(IBAction)sortPressed:(UIBarButtonItem *)sender {
+    [self.viewModel changeListSorting];
+    [self updateSortButton];
+    [self.tableView reloadData];
 }
 
 @end

@@ -10,10 +10,11 @@
 
 @interface OPOTableVM : OPOBaseVM
 
--(NSArray *)getListOfNames;
 -(void)saveAddedName:(NSString *)name;
 -(NSInteger)numberOfItems;
 -(NSString *)getItemNameFor:(NSInteger)index;
 -(void)deleteItemFor:(NSInteger)index;
+-(void)changeListSorting;
+-(NSString *)getNameForSortButton;
 
 @end

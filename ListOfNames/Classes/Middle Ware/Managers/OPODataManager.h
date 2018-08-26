@@ -15,5 +15,6 @@
 -(NSArray *)getListOfNames;
 -(void)saveAddedName:(NSString *)name;
 -(void)deleteNameFor:(NSInteger)index;
+-(void)updateArrayToFile:(NSArray *)array;
 
 @end

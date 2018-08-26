@@ -9,30 +9,60 @@
 #import "OPOTableVM.h"
 #import "OPODataManager.h"
 
+@interface OPOTableVM ()
+{
+    BOOL isSortingAscending;
+}
+
+@property (nonatomic) NSArray *listOfNames;
+
+@end
+
 @implementation OPOTableVM
 
--(NSArray *)getListOfNames
-{
-    NSArray *result = [[OPODataManager sharedManager] getListOfNames];
-    return result;
+#pragma mark - Custom Accessors
+
+-(NSArray *)listOfNames {
+    if (_listOfNames == nil)
+    {
+        _listOfNames = [[OPODataManager sharedManager] getListOfNames];
+    }
+    return _listOfNames;
 }
+
+#pragma mark - Public Methods
 
 -(void)saveAddedName:(NSString *)name {
     [[OPODataManager sharedManager] saveAddedName:name];
+    isSortingAscending = NO;
+    self.listOfNames = nil;
 }
 
 -(NSInteger)numberOfItems {
-    return [self getListOfNames].count;
+    return self.listOfNames.count;
 }
 
--(NSString *)getItemNameFor:(NSInteger)index
-{
-    NSString *name = [[self getListOfNames] objectAtIndex:index];
+-(NSString *)getItemNameFor:(NSInteger)index {
+    NSString *name = [self.listOfNames objectAtIndex:index];
     return name;
 }
 
 -(void)deleteItemFor:(NSInteger)index {
     [[OPODataManager sharedManager] deleteNameFor:index];
+    self.listOfNames = nil;
+}
+
+-(void)changeListSorting {
+    isSortingAscending = !isSortingAscending;
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:isSortingAscending selector:@selector(localizedStandardCompare:)];
+    NSArray *descriptors = [NSArray arrayWithObjects:descriptor, nil];
+    NSArray *sortedArray = [self.listOfNames sortedArrayUsingDescriptors:descriptors];
+    [[OPODataManager sharedManager] updateArrayToFile:sortedArray];
+    self.listOfNames = nil;
+}
+
+-(NSString *)getNameForSortButton {
+    return isSortingAscending ? NSLocalizedString(@"table_vc_sort_descending", nil) : NSLocalizedString(@"table_vc_sort_ascending", nil);
 }
 
 @end
